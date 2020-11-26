@@ -1,10 +1,7 @@
 const popup = () => {
   const popup = document.querySelector('.popup-call'),
     callBtn = document.querySelectorAll('.call-btn');
-
-    console.log(popup);
-  
-
+    
     callBtn.forEach((item) => {
       item.addEventListener('click', (event) => {
         event.preventDefault()
