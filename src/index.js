@@ -9,10 +9,11 @@ import "es6-promise/auto";
 
 
 
-import test1 from './modules/test1'
+import popup from './modules/popup'
 import test2 from './modules/test2'
 
-test1()
+//popup
+popup()
 test2()
 
 
