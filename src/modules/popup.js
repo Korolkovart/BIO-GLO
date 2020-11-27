@@ -1,24 +1,51 @@
 const popup = () => {
-  const popup = document.querySelector('.popup-call'),
-    callBtn = document.querySelectorAll('.call-btn');
+  const popupCall = document.querySelector('.popup-call'),
+    popupCheck = document.querySelector('.popup-check'),
+    popupDiscount = document.querySelector('.popup-discount'),
+    callBtn = document.querySelectorAll('.call-btn'),
+    discountBtn = document.querySelectorAll('.discount-btn'),
+    gaugingButton = document.querySelector('.gauging-button'),
+    popup = document.querySelector('.popup');
 
-    callBtn.forEach((item) => {
+    let allBtn = [...callBtn, ...discountBtn,gaugingButton]
+
+    allBtn.forEach((item) => {
       item.addEventListener('click', (event) => {
-        event.preventDefault()
-        popup.style.display = 'inline-block';
+        event.preventDefault();
+        let target = event.target;
+        let currentPopup;
+        if(target.closest('.gauging-button')){
+          currentPopup = popupCheck;
+          popupCheck.style.display = 'inline-block';
+        }
+        if(target.closest('.discount-btn')){
+          currentPopup = popupDiscount;
+          popupDiscount.style.display = 'inline-block';
+        }
+        if(target.closest('.call-btn')){
+          currentPopup = popupCall;
+          popupCall.style.display = 'inline-block';
+        }
+        closePopup(currentPopup)
       })
     })
 
-    popup.addEventListener('click', (event) => {
+    const closePopup = (currentPopup) => {
+      currentPopup.addEventListener('click', (event) => {
       let target = event.target;
-      
+      event.preventDefault()
       if (target.closest('.popup-close')){
-        popup.style.display = 'none';
+        let input = currentPopup.getElementsByTagName('input');
+        console.log(input[0]);
+        input[0].removeAttribute('required')
+        input[1].removeAttribute('required')
+        currentPopup.style.display = 'none';
       }
       if (!target.closest('.popup-content')){
-        popup.style.display = 'none';
+        currentPopup.style.display = 'none';
       }
     })
+  }  
 }
 
 export default popup;

@@ -5,9 +5,6 @@ const more = () => {
     children = row.querySelectorAll('*'),
     widthScreen = document.documentElement.clientWidth;
 
-    console.log(children);
-    console.log(widthScreen);
-
   addBtn.addEventListener('click', (event) => {
     event.preventDefault();
     if(widthScreen > 793){
@@ -20,9 +17,6 @@ const more = () => {
       children[30].classList.remove('hidden');
       addBtn.style.display = 'none'
     }
-
-    
   })
-
 }
 export default more
