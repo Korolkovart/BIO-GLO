@@ -9,10 +9,12 @@ import "es6-promise/auto";
 
 
 
-import test1 from './modules/test1'
-import test2 from './modules/test2'
+import popup from './modules/popup'
+import accordion from './modules/accordion'
 
-test1()
-test2()
+//popup
+popup()
+//accordion-two
+accordion()
 
 
