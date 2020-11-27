@@ -1,9 +1,7 @@
 const accordion = () => {
   const accordionTwo = document.getElementById('accordion-two'),
     panelHeading = accordionTwo.querySelectorAll('.panel-heading'),
-    panelCollapse = accordionTwo.querySelectorAll('.panel-collapse'),
-    link = document.querySelectorAll('#accordion-two > a[href*="#"]');
-  console.log(link);
+    panelCollapse = accordionTwo.querySelectorAll('.panel-collapse');
 
   const changeAccordion = (index) => {
     panelCollapse.forEach((elem, i) => {
