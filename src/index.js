@@ -10,16 +10,21 @@ import "es6-promise/auto";
 
 
 import popup from './modules/popup'
-import accordion from './modules/accordion'
 import more from './modules/more'
+import culcAccordions from './modules/culcAccordions'
+import culc from './modules/culc'
+
+
 
 
 //popup
 popup()
-//accordion-two
-accordion()
+//culcAccordion
+culcAccordions()
 //more
 more()
+//culc
+culc()
 
 
 
