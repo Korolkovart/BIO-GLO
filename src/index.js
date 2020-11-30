@@ -13,6 +13,7 @@ import popup from './modules/popup'
 import more from './modules/more'
 import culcAccordions from './modules/culcAccordions'
 import culc from './modules/culc'
+// import sendForm from './modules/sendForm'
 
 
 
@@ -25,6 +26,8 @@ culcAccordions()
 more()
 //culc
 culc()
+//sendform
+// sendForm()
 
 
 

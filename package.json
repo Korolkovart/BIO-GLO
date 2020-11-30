@@ -32,6 +32,7 @@
     "element-closest": "^3.0.2",
     "es6-promise": "^4.2.8",
     "fetch-polyfill": "^0.8.2",
+    "form-data": "^3.0.0",
     "nodelist-foreach-polyfill": "^1.2.0"
   }
 }

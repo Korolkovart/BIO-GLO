@@ -7,10 +7,21 @@ const culcAccordions = () => {
     callBtn = accordion.querySelector('.call-btn'),
     accordionTwo = document.getElementById('accordion-two'),
     questionHeading = accordionTwo.querySelectorAll('.panel-heading'),
-    questionCollapse = accordionTwo.querySelectorAll('.panel-collapse');
+    questionCollapse = accordionTwo.querySelectorAll('.panel-collapse'),
+    myonoffswitch = document.getElementById('myonoffswitch'),
+    onoffswitchSwitch = document.querySelectorAll('.onoffswitch-switch'),
+    myonoffswitchTwo = document.getElementById('myonoffswitch-two'),
+    panelBody = accordion.querySelectorAll('.panel-body'),
+    infoCircle2 = panelBody[1].querySelectorAll('*');
+
     
     let panelCollapse = [...questionCollapse, ...culcCollapse],
-      panelHeading = [...questionHeading, ...culcHeading]
+      panelHeading = [...questionHeading, ...culcHeading],
+      myonoffswitches = [myonoffswitch,myonoffswitchTwo],
+      firstCircle = [infoCircle2[0],infoCircle2[1],infoCircle2[3],
+        infoCircle2[4],infoCircle2[7],infoCircle2[9],infoCircle2[10]],
+      secondCircle = [infoCircle2[14],infoCircle2[15],infoCircle2[17],
+        infoCircle2[18],infoCircle2[21],infoCircle2[23],infoCircle2[24]];
     // console.log(accordionTwo);
     // console.log(accordion);
     
@@ -65,6 +76,68 @@ const culcAccordions = () => {
 
     })
   })
+
+
+  //swich
+
+  const showFirstCircle = () => {
+    firstCircle.forEach((elem) => {
+      elem.style.display = 'inline-block'
+    })
+  } 
+  const hideFirstCircle = () => {
+    firstCircle.forEach((elem) => {
+      elem.style.display = 'none'
+    })
+  } 
+  const showSecondCircle = () => {
+    secondCircle.forEach((elem) => {
+      elem.style.display = 'inline-block'
+    })
+  } 
+  const hideSecondCircle = () => {
+    secondCircle.forEach((elem) => {
+      elem.style.display = 'none'
+    })
+  } 
+  hideSecondCircle() 
+
+  myonoffswitches[1].removeAttribute('checked')
+  const toggleSwich = (index) => {
+    myonoffswitches.forEach((elem, i) => {
+      if(i === index){
+        let stustAttr =  elem.hasAttribute('checked')
+        if (stustAttr === true && i === 0){
+          elem.removeAttribute('checked')
+          showSecondCircle()
+        } else if (stustAttr === false && i === 0){
+          elem.setAttribute('checked', true)
+          showFirstCircle()
+          hideSecondCircle()
+        }
+        if (stustAttr === false && i === 1 ){
+          elem.setAttribute('checked', true)
+        } else if (stustAttr === true && i === 1 ){
+          elem.removeAttribute('checked')
+        }
+      }
+    })
+  
+  }
+
+
+
+accordion.addEventListener('click', (event) => {
+  onoffswitchSwitch.forEach((item, index) => {
+    let target = event.target;
+    if (item === target.closest('.onoffswitch-switch')){
+      toggleSwich(index)
+    } 
+  })
+})
+
+
+
 
 
 

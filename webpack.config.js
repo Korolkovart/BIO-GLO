@@ -12,6 +12,9 @@ module.exports = {
   devServer: {
     overlay: true
   },
+  node: {
+    fs: 'empty'
+  },
   module: {
     rules: [
       {
