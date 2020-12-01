@@ -13,7 +13,7 @@ const popup = () => {
 
     allBtn.forEach((item) => {
       item.addEventListener('click', (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         let target = event.target;
         let currentPopup;
         if(target.closest('.gauging-button')){
@@ -39,7 +39,7 @@ const popup = () => {
     const closePopup = (currentPopup) => {
       currentPopup.addEventListener('click', (event) => {
       let target = event.target;
-      event.preventDefault()
+      // event.preventDefault()
       if (target.closest('.popup-close')){
         let input = currentPopup.getElementsByTagName('input');
         input[0].removeAttribute('required')

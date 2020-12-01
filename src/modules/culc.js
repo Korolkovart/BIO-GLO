@@ -1,3 +1,5 @@
+import sendForm from "./sendForm";
+
 const culc = () => {
   const accordion = document.getElementById('accordion'),
     accordionTwo = document.getElementById('accordion-two'),
@@ -29,6 +31,8 @@ const culc = () => {
 
       calcResult.value = 10000
 
+  let obj = {}
+
   const info = {
     oneCircle: 10000,
     twoCircle: 15000,
@@ -43,49 +47,81 @@ const culc = () => {
       diameterPrice2 = 0,
       quantityCirclePrice = 0,
       quantityCirclePrice2 = 0,
-      checkAttr = myonoffswitch.hasAttribute('checked');
+      checkAttr = myonoffswitch.hasAttribute('checked'),
+      checkBottomAttr = myonoffswitchTwo.hasAttribute('checked'),
+      inputText = accordion.getElementsByTagName('input')[2];
 
       if(checkAttr === true){
+        obj['numOfCam'] = 1;
         if(diameter === '1.4 метра'){
           diameterPrice = 0
+          obj['diameterFirstWell'] = '1.4 метра'
         } else if (diameter === '2 метра') {
           diameterPrice = 20
+          obj['diameterFirstWell'] = '2 метра'
         }
         if (diameter && quantityCircle === '3 штуки'){
           quantityCirclePrice = 50
+          obj['numOfCircle'] = '3 штуки'
         } else if (diameter && quantityCircle === '2 штуки'){
           quantityCirclePrice = 30
+          obj['numOfCircle'] = '2 штуки'
         } else {
           quantityCirclePrice = 0
+          obj['numOfCircle'] = '1 штукa'
         }
+        if(checkBottomAttr === false){
+          obj['bottom'] = 'no'
+        } else if (checkBottomAttr === true){
+          obj['bottom'] = 'yes'
+        }
+        obj['distance'] = inputText.value
       } else if(checkAttr === false){
         twoPrice *= 2;
+        obj['numOfCam'] = 2;
         if(diameter === '1.4 метра'){
           diameterPrice = 0
+          obj['diameterFirstWell'] = '1.4 метра'
         } else if (diameter === '2 метра') {
           diameterPrice = 20
+          obj['diameterFirstWell'] = '2 метра'
         }
         if(diameter && diameterTwo === '1.4 метра'){
           diameterPrice2 = 0
+          obj['diameterSecondWell'] = '1.4 метра'
         } else if (diameter && diameterTwo === '2 метра') {
           diameterPrice2 = 20
+          obj['diameterSecondWell'] = '2 метра'
         }
         if (diameter && diameterTwo && quantityCircle === '3 штуки'){
           quantityCirclePrice = 50
+          obj['numOfCircle'] = '3 штуки'
         } else if (diameter && diameterTwo && quantityCircle === '2 штуки'){
           quantityCirclePrice = 30
+          obj['numOfCircle'] = '2 штуки'
         } else {
           quantityCirclePrice = 0
+          obj['numOfCircle'] = '1 штукa'
         }
-
         if (quantityCircleTwo === '3 штуки'){
           quantityCirclePrice2 = 40
+          obj['numOfSecondCircle'] = '3 штуки'
         } else if (quantityCircleTwo === '2 штуки'){
           quantityCirclePrice2 = 20
+          obj['numOfSecondCircle'] = '2 штуки'
         } else {
           quantityCirclePrice2 = 0
+          obj['numOfSecondCircle'] = '1 штукa'
         }
+        if(checkBottomAttr === false){
+          obj['bottom'] = 'no'
+        } else if (checkBottomAttr === true){
+          obj['bottom'] = 'yes'
+        }
+        obj['distance'] = inputText.value
       }
+
+
 
       let totalDiameter = onePrice / 100 * diameterPrice,
         totalDiameter2 = onePrice / 100 * diameterPrice2,
@@ -98,6 +134,8 @@ const culc = () => {
           total2 = onePrice + totalDiameter2 + totalQuantityCircle2 + bottom2;
 
       info.total(total1, total2)
+      console.log(obj);
+
     },
     total: function(total1, total2){
      
@@ -107,6 +145,10 @@ const culc = () => {
       } else if (myonoffswitch.checked === true){
         calcResult.value = total1
       }
+
+
+      // console.log(obj);
+      // sendForm(obj)
     }
 
   }
@@ -130,6 +172,8 @@ const culc = () => {
       target === diameterTwo || target === quantityCircle ||
       target === quantityCircleTwo){
         info.culculate()
+      console.log(obj);
+
       }
       info.culculate(onePrice,twoPrice)
 
@@ -152,10 +196,6 @@ const culc = () => {
     }
     info.culculate(onePrice,twoPrice)
   })
-
-  // info.culculate()
-
-
 }
 
 export default culc;
