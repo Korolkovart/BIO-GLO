@@ -1,4 +1,4 @@
-import sendForm from "./sendForm";
+import culcSendForm from "./culcSendForm";
 
 const culc = () => {
   const accordion = document.getElementById('accordion'),
@@ -134,7 +134,6 @@ const culc = () => {
           total2 = onePrice + totalDiameter2 + totalQuantityCircle2 + bottom2;
 
       info.total(total1, total2)
-      console.log(obj);
 
     },
     total: function(total1, total2){
@@ -172,7 +171,8 @@ const culc = () => {
       target === diameterTwo || target === quantityCircle ||
       target === quantityCircleTwo){
         info.culculate()
-      console.log(obj);
+      // console.log(obj);
+
 
       }
       info.culculate(onePrice,twoPrice)
@@ -196,6 +196,11 @@ const culc = () => {
     }
     info.culculate(onePrice,twoPrice)
   })
+  culcSendForm(obj)
+
 }
+
+
+
 
 export default culc;

@@ -13,7 +13,7 @@ const popup = () => {
 
     allBtn.forEach((item) => {
       item.addEventListener('click', (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         let target = event.target;
         let currentPopup;
         if(target.closest('.gauging-button')){
@@ -25,10 +25,12 @@ const popup = () => {
           popupDiscount.style.display = 'inline-block';
         }
         if(target.closest('.call-btn')){
+          event.preventDefault();
           currentPopup = popupCall;
           popupCall.style.display = 'inline-block';
         }
         if (target.closest('.consultation-btn')){
+          event.preventDefault();
           currentPopup = popupConsultation;
           popupConsultation.style.display = 'inline-block';
         }
@@ -39,8 +41,9 @@ const popup = () => {
     const closePopup = (currentPopup) => {
       currentPopup.addEventListener('click', (event) => {
       let target = event.target;
-      // event.preventDefault()
       if (target.closest('.popup-close')){
+      // event.preventDefault()
+
         let input = currentPopup.getElementsByTagName('input');
         input[0].removeAttribute('required')
         input[1].removeAttribute('required')
