@@ -25,11 +25,11 @@ let directorInput = directorForm.getElementsByTagName('input')[0]
   let form = document.querySelectorAll('.capture-form'),
     forms = [form[0], form[2], form[3], mainForm, form[4]];
 
+    // console.log(forms);
     directorBtn.addEventListener('submit', (e) => {
       e.preventDefault()
     })
 
-    
 
   const statusMessage = document.createElement('div');
   statusMessage.style.cssText = `font-size: 2rem;`;
@@ -41,9 +41,15 @@ let directorInput = directorForm.getElementsByTagName('input')[0]
       send(item)
     })
   })
+  const createStatusMessage = (item) => {
+    const statusMessage = document.createElement('div');
+    statusMessage.style.cssText = `font-size: 2rem;`;
+    item.appendChild(statusMessage);
+    statusMessage.textContent = loadMessage;
+  
+  }
   
   const send = (item) => {
-
     item.appendChild(statusMessage);
     statusMessage.textContent = loadMessage;
     const formData = new FormData(item);

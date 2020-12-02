@@ -12,7 +12,8 @@ import more from './modules/more'
 import culcAccordions from './modules/culcAccordions'
 import culc from './modules/culc'
 import sendForm from './modules/sendForm'
-import culcSendForm from './modules/culcSendForm'
+import imputRegEx from './modules/imputRegEx'
+
 
 
 //popup
@@ -25,6 +26,8 @@ more()
 culc()
 //sendform
 sendForm()
+//imputRegEx
+imputRegEx()
 
 
 
