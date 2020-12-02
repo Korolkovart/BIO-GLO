@@ -6,8 +6,8 @@ const sendForm = () => {
     directorForm = document.querySelector('.director-form'),
     name2 = document.getElementById('name_2'),
     phone2 = document.getElementById('phone_2'),
-    name11 = document.getElementById('name_11'),
-    phone11 = document.getElementById('phone_11'),
+    name1 = document.getElementById('name_1'),
+    phone1 = document.getElementById('phone_1'),
     name12 = document.getElementById('name_12'),
     phone12 = document.getElementById('phone_12'),
     phone3 = document.getElementById('phone_3'),
@@ -16,7 +16,8 @@ const sendForm = () => {
     directorBtn = document.querySelector('.director-btn'),
     popupCheck = document.querySelector('.popup-check'),
     popupDiscount = document.querySelector('.popup-discount'),
-    popupConsultation = document.querySelector('.popup-consultation');
+    popupConsultation = document.querySelector('.popup-consultation'),
+    popupCall = document.querySelector('.popup-call');
 
     
   let directorInput = directorForm.getElementsByTagName('input')[0]
@@ -35,7 +36,7 @@ const sendForm = () => {
   
 
   let form = document.querySelectorAll('.capture-form'),
-    forms = [form[0], form[2], form[3], mainForm, form[4]];
+    forms = [form[0], form[1], form[3], mainForm, form[4]];
 
     // console.log(forms);
     directorBtn.addEventListener('submit', (e) => {
@@ -103,14 +104,14 @@ const sendForm = () => {
         .finally(() => {
           name2.value = '';
           phone2.value = '';
-          name11.value = '';
-          phone11.value = '';
+          name1.value = '';
+          phone1.value = '';
           name12.value = '';
           phone12.value = '';
           phone3.value = '';
           setTimeout(() => statusMessage.style.display = 'none', 2000);
           setTimeout(() => popupCheck.style.display = 'none', 3000);
-          setTimeout(() => popupDiscount.style.display = 'none', 3000);
+          setTimeout(() => popupCall.style.display = 'none', 3000);
           setTimeout(() => popupConsultation.style.display = 'none', 3000);
 
         })

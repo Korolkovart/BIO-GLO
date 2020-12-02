@@ -2,9 +2,9 @@ const culcSendForm = (obj) => {
   const errorMessage = 'Что то пошло не так',
     loadMessage = 'Загрузка...',
     sucsessMessage = 'Спасибо! Мы скоро с Вами свяжемся!',
-    name1 = document.getElementById('name_1'),
-    phone1 = document.getElementById('phone_1'),
-    popupCall = document.querySelector('.popup-call'),
+    name11 = document.getElementById('name_11'),
+    phone11 = document.getElementById('phone_11'),
+    popupDiscount = document.querySelector('.popup-discount'),
     accordion = document.getElementById('accordion');
 
   let form = document.querySelectorAll('.capture-form'),
@@ -13,13 +13,20 @@ const culcSendForm = (obj) => {
   const statusMessage = document.createElement('div');
   statusMessage.style.cssText = `font-size: 2rem;`;
 
-  form[1].addEventListener('submit', (event) => {
+  form[1].classList.add('culc_form')
+  let currentForm = document.querySelector('.culc_form')
+
+  // console.log(form);
+
+
+
+  form[2].addEventListener('submit', (event) => {
     event.preventDefault();
     const statusMessage = document.createElement('div');
      statusMessage.style.cssText = `font-size: 2rem;`;
-    form[1].appendChild(statusMessage);
+    form[2].appendChild(statusMessage);
     statusMessage.textContent = loadMessage;
-    const formData = new FormData(form[1]);
+    const formData = new FormData(form[2]);
     let body = {};
     formData.forEach((val, key) => {
       body[key] = val;
@@ -36,11 +43,11 @@ const culcSendForm = (obj) => {
           console.error(error)
         })
         .finally(() => {
-          name1.value = '';
-          phone1.value = '';
+          name11.value = '';
+          phone11.value = '';
           inputText.value = '';
           setTimeout(() => statusMessage.style.display = 'none', 3000);
-          setTimeout(() => popupCall.style.display = 'none', 4000);
+          setTimeout(() => popupDiscount.style.display = 'none', 4000);
 
         })
   })

@@ -7,9 +7,14 @@ const popup = () => {
     discountBtn = document.querySelectorAll('.discount-btn'),
     gaugingButton = document.querySelector('.gauging-button'),
     consultationBtn = document.querySelector('.consultation-btn'),
-    popup = document.querySelector('.popup');
+    popup = document.querySelector('.popup'),
+    constructBtn = document.querySelectorAll('.construct-btn')[3];
 
-    let allBtn = [...callBtn, ...discountBtn,gaugingButton,consultationBtn]
+    constructBtn.classList.add('current__btn')
+    constructBtn.classList.remove('call-btn')
+    let currentBtn = document.querySelectorAll(('.current__btn'));
+
+    let allBtn = [...callBtn, ...discountBtn,gaugingButton,consultationBtn, constructBtn]
 
     allBtn.forEach((item) => {
       item.addEventListener('click', (event) => {
@@ -20,7 +25,7 @@ const popup = () => {
           currentPopup = popupCheck;
           popupCheck.style.display = 'inline-block';
         }
-        if(target.closest('.discount-btn')){
+        if(target.closest('.discount-btn') || target.closest('.current__btn')){
           currentPopup = popupDiscount;
           popupDiscount.style.display = 'inline-block';
         }
@@ -33,7 +38,7 @@ const popup = () => {
           event.preventDefault();
           currentPopup = popupConsultation;
           popupConsultation.style.display = 'inline-block';
-        }
+        } 
         closePopup(currentPopup)
       })
     })
