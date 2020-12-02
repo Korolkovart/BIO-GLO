@@ -14,7 +14,8 @@ const culc = () => {
     myonoffswitchTwo = document.getElementById('myonoffswitch-two'),
     panelBody = accordion.querySelectorAll('.panel-body'),
     infoCircle2 = panelBody[1].querySelectorAll('*'),
-    calcResult = document.getElementById('calc-result');
+    calcResult = document.getElementById('calc-result'),
+    constructBtn = document.querySelectorAll('.construct-btn')[3];
 
     let panelCollapse = [...questionCollapse, ...culcCollapse],
     panelHeading = [...questionHeading, ...culcHeading],
@@ -27,8 +28,18 @@ const culc = () => {
       quantityCircle = firstCircle[6].options[firstCircle[6].selectedIndex].value,
       diameterTwo = secondCircle[3].options[secondCircle[3].selectedIndex].value,
       quantityCircleTwo = secondCircle[6].options[secondCircle[6].selectedIndex].value,
-      diameterValue = firstCircle[3].value;
+      diameterValue = firstCircle[3].value,
+      inputText = accordion.getElementsByTagName('input')[2];
 
+
+      constructBtn.setAttribute('disabled', true)
+      inputText.addEventListener('input', () => {
+        if (inputText.value.length < 1){
+          constructBtn.setAttribute('disabled', true)
+        } else if (inputText.value.length  > 1){
+          constructBtn.removeAttribute('disabled')
+        }
+      })
       calcResult.value = 10000
 
   let obj = {}

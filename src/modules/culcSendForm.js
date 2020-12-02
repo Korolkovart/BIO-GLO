@@ -4,15 +4,19 @@ const culcSendForm = (obj) => {
     sucsessMessage = 'Спасибо! Мы скоро с Вами свяжемся!',
     name1 = document.getElementById('name_1'),
     phone1 = document.getElementById('phone_1'),
-    popupCall = document.querySelector('.popup-call');
+    popupCall = document.querySelector('.popup-call'),
+    accordion = document.getElementById('accordion');
 
-  let form = document.querySelectorAll('.capture-form')
+  let form = document.querySelectorAll('.capture-form'),
+    inputText = accordion.getElementsByTagName('input')[2];
 
   const statusMessage = document.createElement('div');
   statusMessage.style.cssText = `font-size: 2rem;`;
 
   form[1].addEventListener('submit', (event) => {
     event.preventDefault();
+    const statusMessage = document.createElement('div');
+     statusMessage.style.cssText = `font-size: 2rem;`;
     form[1].appendChild(statusMessage);
     statusMessage.textContent = loadMessage;
     const formData = new FormData(form[1]);
@@ -34,6 +38,7 @@ const culcSendForm = (obj) => {
         .finally(() => {
           name1.value = '';
           phone1.value = '';
+          inputText.value = '';
           setTimeout(() => statusMessage.style.display = 'none', 3000);
           setTimeout(() => popupCall.style.display = 'none', 4000);
 
@@ -55,3 +60,4 @@ const culcSendForm = (obj) => {
 }
 
 export default culcSendForm;
+

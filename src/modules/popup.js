@@ -42,7 +42,7 @@ const popup = () => {
       currentPopup.addEventListener('click', (event) => {
       let target = event.target;
       if (target.closest('.popup-close')){
-      // event.preventDefault()
+      event.preventDefault()
 
         let input = currentPopup.getElementsByTagName('input');
         input[0].removeAttribute('required')

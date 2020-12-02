@@ -13,16 +13,16 @@ const imputRegEx = () => {
     btnCupture = document.querySelectorAll('.capture-form-btn'),
     mainFormBtn = document.querySelector('.main-form-btn');
 
-    let form = document.querySelectorAll('.capture-form');
+  let form = document.querySelectorAll('.capture-form');
   
   let name = [name1, name2, name11, name12, name13];
   let phone = [phone1, phone2, phone3, phone11, phone12, phone13];
   let btn = [...btnCupture, mainFormBtn]
+  
 
 
-  // btn.forEach((item) => {
-  //   item.setAttribute('disabled', true);
-  // })
+  // console.log(name1);
+  // console.log(btnCupture);
 
 
 
@@ -50,31 +50,43 @@ const imputRegEx = () => {
     }
   }
 
+
+  
   phone.forEach((item) => {
     item.addEventListener('input', (event) => {
     const { target } = event
     maskPhone(event, item)
-
+    for (let i = 0; item.value.length > i; i++){
+      btn.forEach((elem) => {
+        elem.setAttribute('disabled', true);
+      })
+      if(i > 10){
+        btn.forEach((elem) => {
+          elem.removeAttribute('disabled')
+        }) 
+      }
+    }
   })
 
-  // const checkName = () => {
+
     name.forEach((item) => {
       item.addEventListener('input', () => {
       item.value = item.value.replace(/[?!,.a-z0-9]+$/ig, '');
-      // for (let i = 0; item.value.length > i; i++){
-      //   btn.forEach((elem) => {
-      //     elem.setAttribute('disabled', true);
-      //   })
-      //   if(i > 0){
-      //     btn.forEach((elem) => {
-      //       elem.removeAttribute('disabled')
-      //     }) 
-      //   }
-      // }
+      for (let i = 0; item.value.length > i; i++){
+        btn.forEach((elem) => {
+          elem.setAttribute('disabled', true);
+        })
+        if(i > 0){
+          btn.forEach((elem) => {
+            elem.removeAttribute('disabled')
+          }) 
+        }
+      }
       })
     })
 
-  // }
+
+
 
 })
   

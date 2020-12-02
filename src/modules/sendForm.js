@@ -18,9 +18,21 @@ const sendForm = () => {
     popupDiscount = document.querySelector('.popup-discount'),
     popupConsultation = document.querySelector('.popup-consultation');
 
+    
+  let directorInput = directorForm.getElementsByTagName('input')[0]
+  directorInput.removeAttribute('required')
+  directorBtn.setAttribute('disabled', true)
+  directorInput.addEventListener('input', () => {
+    if (directorInput.value.length < 1){
+      directorBtn.setAttribute('disabled', true)
+    } else if (directorInput.value.length > 1){
+      directorBtn.removeAttribute('disabled')
+    }
+  })
 
-let directorInput = directorForm.getElementsByTagName('input')[0]
 
+
+  
 
   let form = document.querySelectorAll('.capture-form'),
     forms = [form[0], form[2], form[3], mainForm, form[4]];
@@ -31,8 +43,8 @@ let directorInput = directorForm.getElementsByTagName('input')[0]
     })
 
 
-  const statusMessage = document.createElement('div');
-  statusMessage.style.cssText = `font-size: 2rem;`;
+  // const statusMessage = document.createElement('div');
+  // statusMessage.style.cssText = `font-size: 2rem;`;
 
 
   forms.forEach((item) => {
@@ -41,15 +53,10 @@ let directorInput = directorForm.getElementsByTagName('input')[0]
       send(item)
     })
   })
-  const createStatusMessage = (item) => {
-    const statusMessage = document.createElement('div');
-    statusMessage.style.cssText = `font-size: 2rem;`;
-    item.appendChild(statusMessage);
-    statusMessage.textContent = loadMessage;
-  
-  }
-  
+ 
   const send = (item) => {
+    const statusMessage = document.createElement('div');
+      statusMessage.style.cssText = `font-size: 2rem;`;
     item.appendChild(statusMessage);
     statusMessage.textContent = loadMessage;
     const formData = new FormData(item);
@@ -73,6 +80,7 @@ let directorInput = directorForm.getElementsByTagName('input')[0]
       .finally(() => {
           name13 .value = '';
           phone13.value = '';
+          directorInput.value = '';
           setTimeout(() => statusMessage.style.display = 'none', 2000);
           setTimeout(() => popupConsultation.style.display = 'none', 3000);
         })
