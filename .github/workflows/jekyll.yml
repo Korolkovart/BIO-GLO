@@ -12,10 +12,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: dist
+#     defaults:
+#       run:
+#         shell: bash
+#         working-directory: dist
 
     strategy:
       matrix:
